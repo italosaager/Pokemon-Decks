@@ -1,12 +1,22 @@
 <div *ngIf="deck" class="h-screen bg-slate-600">
-    <div class="flex gap-8 justify-center items-center pt-8">
-        <h2 class="text-xl font-bold text-white">Deck name: {{ deck.name }}</h2>
-        <div class="text-xl font-bold text-white">Trainer Cards: {{ trainerCardsCount }}</div>
-        <div class="text-xl font-bold text-white">Unique Types: {{ uniqueTypesCount }}</div>
-        <button (click)="openEditModal()" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Edit Deck</button>
+    <div class="flex flex-col md:flex-row gap-8 justify-center items-center pt-8">
+        <div class="md:flex-1 text-center">
+            <h2 class="text-xl font-bold text-white">Deck name: {{ deck.name }}</h2>
+        </div>
+        <div class="md:flex-1 text-center">
+            <div class="text-xl font-bold text-white">Trainer Cards: {{ trainerCardsCount }}</div>
+        </div>
+        <div class="md:flex-1 text-center">
+            <div class="text-xl font-bold text-white">Unique Types: {{ uniqueTypesCount }}</div>
+        </div>
+        <div class="md:flex-1">
+            <button (click)="openEditModal()" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded w-full md:w-auto">Edit Deck</button>
+        </div>
     </div>
-    <div class="grid grid-cols-5 gap-4 mt-4 px-40 pb-24 bg-slate-600">
-        <app-card class="transition-transform hover:scale-150" *ngFor="let card of deck.cards"
+    
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-4 px-40 pb-24 bg-slate-600">
+        <app-card class="transition-transform hover:scale-150 min-w-[150px] min-h-[200px]" *ngFor="let card of deck.cards"
                   [name]="card.name" [imageUrl]="card.imageUrl" [count]="card.count">
         </app-card>
     </div>

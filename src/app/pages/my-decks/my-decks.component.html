@@ -12,11 +12,10 @@
         </button>
     </div>
 
-    <div class="grid grid-cols-3 gap-4 pb-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pb-10">
         <app-deck *ngFor="let deck of decks" [deckName]="deck.name" [deckId]="deck.id"
             (deckRemoved)="handleDeckRemoved()"></app-deck>
     </div>
-
 </div>
 
 <div *ngIf="showModal">
