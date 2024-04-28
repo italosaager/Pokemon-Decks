@@ -1,0 +1,37 @@
+<div class="fixed inset-0 bg-gray-600 bg-opacity-50 w-full flex justify-center items-center">
+    <div class="bg-white p-4 rounded-lg shadow-lg w-96">
+      <div class="mb-4">
+        <label for="deckName" class="block text-gray-700 text-sm font-bold mb-2">Deck Name:</label>
+        <input type="text" [(ngModel)]="deckName" id="deckName"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          placeholder="Enter deck name">
+      </div>
+      <div class="mb-4 overflow-y-scroll h-[300px]">
+        <label class="block text-gray-700 text-sm font-bold mb-2">Select Cards (Total: {{ totalCards }}):</label>
+        <div *ngFor="let card of cards" class="flex items-center mb-2">
+          <button (click)="updateCardCount(card, -1)"
+            class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-l">
+            -
+          </button>
+          <input type="text" [(ngModel)]="card.count" class="w-12 text-center border-0" readonly>
+          <button (click)="updateCardCount(card, 1)"
+            class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-r">
+            +
+          </button>
+          <label class="ml-2 flex-1 cursor-pointer text-lg">{{ card.name }}</label>
+          <img [src]="card.imageUrl" alt="{{ card.name }}" class="h-16 mr-2 cursor-pointer">
+        </div>
+      </div>
+      <div class="text-center py-2 text-lg">
+        Total Cards Selected: {{ totalCards }}
+      </div>
+      <div class="flex justify-between">
+        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+          (click)="closeModal()">Cancel</button>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="updateDeck()">Update Deck</button>
+      </div>
+      <app-feedback-modal *ngIf="showFeedbackModal" [title]="feedbackTitle" [message]="feedbackMessage"
+        (closeFeedback)="closeFeedbackModal()"></app-feedback-modal>
+    </div>
+  </div>
+  

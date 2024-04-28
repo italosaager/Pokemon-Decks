@@ -1,0 +1,15 @@
+<div
+  class="card rounded overflow-hidden shadow-inner w-48 transform transition-transform hover:scale-110 cursor-pointer"
+  [routerLink]="['/deck', deckId]">
+  <div class="px-6 py-4 bg-slate-700">
+    <h1 class="flex font-bold text-xl justify-center text-white">{{deckName}}</h1>
+  </div>
+  <img src="/assets/deckbattle.png">
+  <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 w-full"
+    (click)="showConfirmationModal = true; $event.stopPropagation();">Remove</button>
+</div>
+
+<div *ngIf="showConfirmationModal">
+  <app-confirmation-modal title="Confirm Deletion" message="Are you sure you want to delete this deck?"
+    (onConfirm)="confirmRemoval()" (onCancel)="showConfirmationModal = false"></app-confirmation-modal>
+</div>

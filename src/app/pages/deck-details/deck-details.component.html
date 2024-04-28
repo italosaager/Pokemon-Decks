@@ -1,0 +1,20 @@
+<div *ngIf="deck" class="h-screen bg-slate-600">
+    <div class="flex gap-8 justify-center items-center pt-8">
+        <h2 class="text-xl font-bold text-white">Deck name: {{ deck.name }}</h2>
+        <div class="text-xl font-bold text-white">Trainer Cards: {{ trainerCardsCount }}</div>
+        <div class="text-xl font-bold text-white">Unique Types: {{ uniqueTypesCount }}</div>
+        <button (click)="openEditModal()" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Edit Deck</button>
+    </div>
+    <div class="grid grid-cols-5 gap-4 mt-4 px-40 pb-24 bg-slate-600">
+        <app-card class="transition-transform hover:scale-150" *ngFor="let card of deck.cards"
+                  [name]="card.name" [imageUrl]="card.imageUrl" [count]="card.count">
+        </app-card>
+    </div>
+</div>
+<div *ngIf="!deck" class="flex justify-center pt-8 h-[calc(100vh-5rem)] bg-slate-600">
+    <p class="text-white">Deck not found. Please check the ID and try again.</p>
+</div>
+
+<div *ngIf="showEditModal && deck">
+    <app-edit-deck-modal [deckId]="deck.id" (close)="handleModalClose()" (deckUpdated)="handleDeckUpdated($event)"></app-edit-deck-modal>
+</div>

@@ -1,0 +1,30 @@
+<div class="min-h-[calc(100vh-5rem)] flex flex-col items-center bg-slate-600">
+    <div class="flex flex-col items-center mt-8" *ngIf="decks.length === 0">
+        <h1 class="text-white">No decks created!</h1>
+        <button (click)="showModal = true" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Create New Deck
+        </button>
+    </div>
+
+    <div *ngIf="decks.length > 0" class="flex flex-col mt-8 mb-8 ">
+        <button (click)="showModal = true" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Create New Deck
+        </button>
+    </div>
+
+    <div class="grid grid-cols-3 gap-4 pb-10">
+        <app-deck *ngFor="let deck of decks" [deckName]="deck.name" [deckId]="deck.id"
+            (deckRemoved)="handleDeckRemoved()"></app-deck>
+    </div>
+
+</div>
+
+<div *ngIf="showModal">
+    <app-create-deck-modal (close)="handleModalClose()"
+        (deckCreated)="handleDeckCreated($event)"></app-create-deck-modal>
+</div>
+
+<div *ngIf="showFeedbackModal">
+    <app-feedback-modal [title]="feedbackTitle" [message]="feedbackMessage"
+        (closeFeedback)="handleFeedbackClose()"></app-feedback-modal>
+</div>

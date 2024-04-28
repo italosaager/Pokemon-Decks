@@ -1,0 +1,10 @@
+<div class="h-screen bg-slate-600">
+  <div class="px-40 pt-4">
+      <input [(ngModel)]="filterText" (ngModelChange)="applyFilter()" type="text" placeholder="Buscar cartas por nome..." class="p-2 border rounded w-full">
+  </div>
+
+  <div class="grid grid-cols-5 gap-4 mt-4 px-40 pb-24 bg-slate-600">
+      <app-card class="transition-transform hover:scale-150" *ngFor="let card of filteredCards" [name]="card.name" [imageUrl]="card.imageUrl">
+      </app-card>
+  </div>
+</div>

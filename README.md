@@ -6,21 +6,71 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Architecture
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Project separated by components, interface models, pages and services.
 
-## Build
+### Components
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+* Card:
+Reusable component to render the cards
 
-## Running unit tests
+* Confirmation Modal
+Reusable component to confirm actions
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* Create Deck Modal
+Reusable component for deck creation
 
-## Running end-to-end tests
+* Deck
+Reusable component to render the decks
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+* Edit Deck Modal
+Reusable component for deck edition
+
+* Feedback Modal
+Reusable component to give feedback about actions
+
+* Header
+Reusable component to render the navigation bar
+
+### Models
+
+* Card
+Card Interface
+
+* Deck
+Deck Interface
+
+### Pages
+* Home
+Application home page with some information
+
+* All Pokemons
+Page that allows you to view all available cards
+
+* My Decks
+Page that allows you to view the decks created
+
+* Deck Details
+Page that allows you to view deck details
+
+### Services
+
+* API Service
+Searches for data in the Pokemon API and stores the values ​​in memory
+
+* Deck Service
+Creates features related to decks based on the API search
+
+## Functionalities
+
+* Create deck
+* View created decks
+* Remove created decks
+* Edit created decks
+* View deck details
+* List all available cards
+* Filter the list of available cards
 
 ## Further help
 

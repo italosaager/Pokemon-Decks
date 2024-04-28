@@ -1,0 +1,48 @@
+<div class="h-[calc(100vh-5rem)] w-full bg-slate-600">
+  <div class="container mx-auto p-8 bg-slate-600">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-2">
+      <div class="md:col-span-3 bg-white shadow-lg rounded-lg p-6">
+        <h1 class="font-bold text-xl mb-2">Welcome to PokémonDeck Builder!</h1>
+        <p>Build and manage your Pokémon Decks. Get started now by adding a new deck or exploring your collection!</p>
+        <p>You can also check all available Pokémons to see which ones are available.</p>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-lg p-6 ">
+        <h2 class="font-bold text-lg mb-4">Quick Actions</h2>
+        <div class="flex gap-4">
+          <button (click)="showModal = true"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Create New Deck
+          </button>
+          <button [routerLink]="['/mydecks']"
+            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+            View My Decks
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-lg p-6">
+        <h2 class="font-bold text-lg mb-4">Deck Statistics</h2>
+        <p>Number of Decks: {{decksNumber}}</p>
+        <p>Most Used Cards: {{mostUsedPokemon}}</p>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-lg p-6">
+        <h2 class="font-bold text-lg mb-4">Deck Building Tips</h2>
+        <ul class="list-disc pl-4">
+          <li class="mb-2">Balance your deck with a mix of Pokémon, Trainer, and Energy cards.</li>
+          <li class="mb-2">Consider the synergy between your Pokémon's abilities.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showModal">
+  <app-create-deck-modal (close)="handleModalClose()" (deckCreated)="handleDeckCreated($event)"></app-create-deck-modal>
+</div>
+
+<div *ngIf="showFeedbackModal">
+  <app-feedback-modal [title]="feedbackTitle" [message]="feedbackMessage"
+    (closeFeedback)="handleFeedbackClose()"></app-feedback-modal>
+</div>
